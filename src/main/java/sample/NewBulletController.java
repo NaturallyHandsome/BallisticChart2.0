@@ -16,6 +16,6 @@ public class NewBulletController {
 
     public void addBulletToDButton() throws SQLException, ClassNotFoundException {
         addBulletToDB(new Bullet(String.valueOf(NameField.getText()), Double.parseDouble(String.valueOf(massField.getText())),
-                Double.parseDouble(String.valueOf(bcField.getText())), Double.parseDouble(String.valueOf(caliberField.getText())), Double.parseDouble(String.valueOf(speedField.getText()))));
+                String.valueOf(bcField.getText()), Double.parseDouble(String.valueOf(caliberField.getText())), Double.parseDouble(String.valueOf(speedField.getText()))));
     }
 }

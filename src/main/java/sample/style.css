@@ -1,13 +1,19 @@
-* {
-        -fx-primary:  #212121;
-        -fx-secondary: #ffbb5b;
-        -fx-blue: #4682b4;
-        -fx-primarytext:  #e2e0e0;
+
+.jfx-combo.box {
+    -fx-text-fill: red;
+}
+.jfx-combo-box .label {
+
+	-fx-text-fill: red;
 }
 
-
-.root {
-    -fx-background-color: -fx-primary;
+.combo-box {
+    -fx-background-color: #4d4d4d;
 }
 
-
+.combo-box .text-field {
+    -fx-prompt-text-fill: rgba(255, 255, 0, 0.5);
+}
+.combo-box .text-field: focused {
+    -fx-prompt-text-fill: black;
+}

@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import static java.lang.String.valueOf;
+import static sample.PhyConstants.MACH_MS;
 
 public class CartridgeConnection {
 
@@ -15,8 +16,8 @@ public class CartridgeConnection {
         PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM BulletTable WHERE name=?;");
         preparedStatement.setString(1,name);
         ResultSet resultSet=preparedStatement.executeQuery();
-        return new Bullet(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getDouble("mass"),
-                resultSet.getDouble("bc"), resultSet.getDouble("caliber"),resultSet.getDouble("muzzleVelocity"));
+        return new Bullet(resultSet.getString("name"), resultSet.getDouble("mass"),
+                resultSet.getString("bc"), resultSet.getDouble("caliber"), resultSet.getDouble("muzzleVelocity"));
     }
 
     private static void getConnection() throws ClassNotFoundException, SQLException {
@@ -24,21 +25,27 @@ public class CartridgeConnection {
         con = DriverManager.getConnection("jdbc:sqlite:CartridgeDB.db");
     }
 
-    //generates list of GFunctions
-    static ArrayList<GFunction> GetGFunctions() throws SQLException, ClassNotFoundException {
-        ArrayList<GFunction> GFunctions = new ArrayList<>();
-        if(con==null) getConnection();
-        Statement state = con.createStatement();
-        ResultSet resultSet = state.executeQuery("SELECT * from GFunction");
-        while ( resultSet.next()){
-            GFunction gf = new GFunction();
-            gf.Speed = resultSet.getDouble("m/s");
+    /*
+    // shall not be used anymore
+    @Deprecated static ArrayList<CdFunctions> GetGFunctions() throws SQLException, ClassNotFoundException {
+        ArrayList<CdFunctions> gFunctions = new ArrayList<>();
+        if (con == null) getConnection();
+        Statement statement = con.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * from GFunctionMach");
+     /*   while (resultSet.next()){
+            CdFunctions gf = new CdFunctions();
+            gf.Speed=resultSet.getDouble("ma") * MACH_MS.get(); //converts mach to m/s
             gf.G1 = resultSet.getDouble("G1");
-            GFunctions.add(gf);
+            gf.G2 = resultSet.getDouble("G2");
+            gf.G5 = resultSet.getDouble("G5");
+            gf.G6 = resultSet.getDouble("G6");
+            gf.G7 = resultSet.getDouble("G7");
+            gf.G8 = resultSet.getDouble("G8");
+            gFunctions.add(gf);
         }
-        return GFunctions;
+        return gFunctions;
     }
-
+    */
     static ArrayList<String> GetBulletNames() throws SQLException, ClassNotFoundException {
         ArrayList<String> bulletNames=new ArrayList<>();
         if(con==null)
@@ -58,25 +65,11 @@ public class CartridgeConnection {
         PreparedStatement prep= con.prepareStatement("INSERT INTO BulletTable values(?,?,?,?,?,?);");
         prep.setString(2, valueOf(String.valueOf(bullet.getName())));
         prep.setString(3, valueOf(String.valueOf(bullet.getMass())));
-        prep.setString(4, valueOf(String.valueOf(bullet.getVelocity())));
+        prep.setString(4, valueOf(String.valueOf(bullet.getMuzzleVelocity())));
         prep.setString(5, valueOf(String.valueOf(bullet.getCaliber())));
         prep.setString(6, valueOf(String.valueOf(bullet.getBC())));
         prep.execute();
     }
-
-
-    public  static ArrayList<Bullet> CreateBulletList() throws SQLException, ClassNotFoundException {
-        ArrayList<Bullet> Bullets = new ArrayList<>();
-        if (con==null) getConnection();
-        Statement state = con.createStatement();
-        ResultSet resultSet = state.executeQuery("SELECT * from BulletTable");
-        while ( resultSet.next()){
-            Bullets.add(new Bullet(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getDouble("mass"),
-                    resultSet.getDouble("bc"), resultSet.getDouble("caliber"),resultSet.getDouble("muzzleVelocity")));
-        }
-        return Bullets;
-    }
-
 
 
 }
