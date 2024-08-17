@@ -1,0 +1,21 @@
+.chart {
+  -fx-background-color:  #2d2d2d;
+}
+.chart-plot-background {
+  -fx-background-color: #2d2d2d;
+}
+.chart-legend {
+   -fx-background-color:  transparent;
+   -fx-padding: 20px;
+}
+.chart-legend-item{
+    -fx-text-fill: #F0F1F2;
+}
+.axis {
+    -fx-tick-label-fill: #F0F1F2;
+}
+
+.axis-label {
+  -fx-text-fill: #F0F1F2;
+}
+

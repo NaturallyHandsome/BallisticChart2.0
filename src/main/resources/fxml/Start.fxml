@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="540.0" prefWidth="1260.0" style="-fx-background-color: #2d2d2d;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <AnchorPane layoutX="12.0" layoutY="21.0" minWidth="-Infinity" prefHeight="499.0" prefWidth="437.0">
+      <children>
+      <JFXToggleButton fx:id="SpeedGraphSwitch" layoutX="245.0" layoutY="330.0" prefHeight="55.0" prefWidth="145.0" text="Speed Graph" textFill="#bbbbbb" toggleColor="#f4bb27" />
+      <Label layoutX="28.0" layoutY="136.0" text="Range" textFill="#bbbbbb">
+          <font>
+              <Font size="17.0" />
+          </font>
+      </Label>
+      <JFXTextField fx:id="RangeField" alignment="TOP_RIGHT" focusColor="#f4bb27" layoutX="319.0" layoutY="136.0" onKeyTyped="#setRangeSlider" prefHeight="25.0" prefWidth="55.0" promptText="1500 m" style="-fx-text-fill: #bbbbbb;" text="500" />
+      <JFXSlider fx:id="RangeSlider" indicatorPosition="RIGHT" layoutX="28.0" layoutY="178.0" max="1500.0" prefHeight="14.0" prefWidth="361.0" />
+      <JFXButton buttonType="RAISED" layoutX="15.0" layoutY="441.0" onAction="#Calculate" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #f4bb27;" text="Calculate" textAlignment="JUSTIFY" textFill="#454545">
+          <font>
+              <Font size="16.0" />
+          </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="263.0" layoutY="441.0" onAction="#openAddBullet" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #f18701;" text="Add to DB" textAlignment="JUSTIFY" textFill="#454545">
+          <font>
+              <Font size="16.0" />
+          </font>
+      </JFXButton>
+      <JFXTextField fx:id="NameField" alignment="TOP_RIGHT" focusColor="#f4bb27" layoutX="168.0" layoutY="50.0" prefHeight="25.0" prefWidth="187.0" promptText="Bullet Name" style="-fx-text-fill: #bbbbbb;" />
+      <Label layoutX="28.0" layoutY="50.0" text="Search Bullet" textFill="#bbbbbb">
+          <font>
+              <Font size="17.0" />
+          </font>
+      </Label>
+         <Separator layoutX="416.0" layoutY="7.0" opacity="0.29" orientation="VERTICAL" prefHeight="460.0" prefWidth="0.0" style="-fx-background-radius: 20px;" />
+         <JFXDrawer layoutX="485.0" layoutY="116.0" />
+         <ComboBox fx:id="GCombo" layoutX="325.0" layoutY="289.0" prefHeight="25.0" prefWidth="63.0" promptText="G7" style="-fx-background-color: #4d4d4d;" styleClass="combo-box" />
+         <Label layoutX="30.0" layoutY="231.0" text="Wind Speed" textFill="#bbbbbb">
+            <font>
+               <Font size="17.0" />
+            </font>
+         </Label>
+         <JFXTextField fx:id="windSpeedField" alignment="TOP_RIGHT" focusColor="#f4bb27" layoutX="161.0" layoutY="227.0" onKeyTyped="#setRangeSlider" prefHeight="25.0" prefWidth="55.0" promptText="10 m/s" style="-fx-text-fill: #bbbbbb;" text="10" />
+         <Label layoutX="234.0" layoutY="227.0" text="Orientation" textFill="#bbbbbb">
+            <font>
+               <Font size="17.0" />
+            </font>
+         </Label>
+         <JFXTextField fx:id="windOrientationField" alignment="TOP_RIGHT" focusColor="#f4bb27" layoutX="344.0" layoutY="227.0" onKeyTyped="#setRangeSlider" prefHeight="25.0" prefWidth="42.0" promptText="120°" style="-fx-text-fill: #bbbbbb;" text="150" />
+         <Label layoutX="28.0" layoutY="289.0" text="Shooting Angle" textFill="#bbbbbb">
+            <font>
+               <Font size="17.0" />
+            </font>
+         </Label>
+         <JFXTextField fx:id="shootingAngleField" alignment="TOP_RIGHT" focusColor="#f4bb27" layoutX="164.0" layoutY="289.0" onKeyTyped="#setRangeSlider" prefHeight="25.0" prefWidth="49.0" promptText="0°" style="-fx-text-fill: #bbbbbb;" text="30" />
+         <Label layoutX="239.0" layoutY="289.0" text="Model" textFill="#bbbbbb">
+            <font>
+               <Font size="17.0" />
+            </font>
+         </Label>
+         <Label layoutX="28.0" layoutY="345.0" text="Target Angle" textFill="#bbbbbb">
+            <font>
+               <Font size="17.0" />
+            </font>
+         </Label>
+         <JFXTextField fx:id="targetAngleField" alignment="TOP_RIGHT" editable="false" focusColor="#f4bb27" layoutX="164.0" layoutY="345.0" onKeyTyped="#setRangeSlider" prefHeight="25.0" prefWidth="49.0" promptText="1 MOA" style="-fx-text-fill: #bbbbbb;" text="1°" />
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="chartAnchorPane" layoutX="449.0" prefHeight="540.0" prefWidth="811.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="449.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <Label fx:id="dropLabel" layoutX="8.0" layoutY="500.0" text="Vetical Error (cm)" textFill="#bbbbbb" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="500.0">
+            <font>
+               <Font size="17.0" />
+            </font>
+         </Label>
+         <Label fx:id="finalVelLabel" layoutX="303.0" layoutY="500.0" text="Final Velocity" textFill="#bbbbbb" AnchorPane.leftAnchor="303.0" AnchorPane.topAnchor="500.0">
+            <font>
+               <Font size="17.0" />
+            </font>
+         </Label>
+         <LineChart fx:id="startChart" createSymbols="false" layoutX="4.0" layoutY="25.0" legendSide="RIGHT" prefHeight="460.0" prefWidth="801.0" stylesheets="@style.css">
+           <xAxis>
+             <NumberAxis label="Distance [m]" side="BOTTOM" tickLabelFill="WHITE" fx:id="xAxis" />
+           </xAxis>
+           <yAxis>
+             <NumberAxis fx:id="yAxis" label="Z [cm]" side="LEFT" tickLabelFill="WHITE" />
+           </yAxis>
+         </LineChart>
+      </children></AnchorPane>
+</AnchorPane>
