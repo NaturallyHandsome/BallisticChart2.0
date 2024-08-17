@@ -19,8 +19,5 @@
         <module name="BallisticChart2.0" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="BallisticChart2.0" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>

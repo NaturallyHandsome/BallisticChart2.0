@@ -5,7 +5,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import static java.lang.String.valueOf;
-import static sample.PhyConstants.MACH_MS;
 
 public class CartridgeConnection {
 

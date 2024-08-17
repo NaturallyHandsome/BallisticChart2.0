@@ -1,9 +1,6 @@
 //This is the Bullet class used to perform calculations.
 package sample;
 
-import org.apache.commons.lang3.ObjectUtils;
-
-import javax.vecmath.Vector3d;
 import javax.vecmath.Vector4d;
 import java.util.ArrayList;
 

@@ -69,7 +69,7 @@
    </AnchorPane>
    <AnchorPane fx:id="chartAnchorPane" layoutX="449.0" prefHeight="540.0" prefWidth="811.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="449.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-         <Label fx:id="dropLabel" layoutX="8.0" layoutY="500.0" text="Vetical Error (cm)" textFill="#bbbbbb" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="500.0">
+         <Label fx:id="dropLabel" layoutX="8.0" layoutY="500.0" text="Vertical Error (cm)" textFill="#bbbbbb" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="500.0">
             <font>
                <Font size="17.0" />
             </font>
